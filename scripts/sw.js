@@ -1,17 +1,17 @@
 const ASSETS = [
-  "./fonts/PermanentMarker-Regular.ttf",
-  "./images/reset.png",
-  "./images/info.png",
-  "./images/logo.png",
-  "./images/pvp.png",
-  "./images/pvc.png",
-  "./scripts/main.js",
-  "./styles/fonts.css",
-  "./styles/style.css",
-  "./index.html",
+  "../fonts/PermanentMarker-Regular.ttf",
+  "../images/reset.png",
+  "../images/info.png",
+  "../images/logo.png",
+  "../images/pvp.png",
+  "../images/pvc.png",
+  "../scripts/main.js",
+  "../styles/fonts.css",
+  "../styles/style.css",
+  "../index.html",
 ];
 
-let cache_name = "HBDTicTacToe";
+let cache_name = "HBDTicTacToe-v1";
 
 self.addEventListener("install", (event) => {
   console.log("Installing...");
@@ -28,11 +28,11 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  console.log(event.request.url);
+  console.log(event.request);
 
   event.respondWith(
-    fetch(event.request).catch((err) =>
-      caches.match(event.request).then((response) => response)
-    )
+    caches.match(event.request).then((cached_response) => {
+      return cached_response || fetch(event.request);
+    })
   );
 });
