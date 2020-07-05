@@ -46,7 +46,7 @@ body {
   background-repeat: no-repeat;
 }
 #title {
-  font-family: "Permanent Marker";
+  font-family: "Permanent Marker", Arial, Helvetica, sans-serif;
   transform: rotate(-6deg);
   margin: -1rem;
 }
