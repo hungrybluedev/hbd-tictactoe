@@ -40,7 +40,7 @@ body {
 #logo-header {
   width: 6rem;
   height: 2.2rem;
-  background-image: url("/images/logo.png");
+  background-image: url("../images/logo.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
