@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicTacToe | Hungry Blue Dev</title>
+
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div id="full-size-container">
+      <div id="game-area">
+        <a href="https://hungrybluedev.in/"><div id="logo-header"></div></a>
+        <div id="title">
+          <h1>TicTacToe</h1>
+        </div>
+        <div id="message">❌'s turn!</div>
+        <canvas id="covering"></canvas>
+        <table id="grids">
+          <tr>
+            <td><button id="1"></button></td>
+            <td><button id="2"></button></td>
+            <td><button id="3"></button></td>
+          </tr>
+          <tr>
+            <td><button id="4"></button></td>
+            <td><button id="5"></button></td>
+            <td><button id="6"></button></td>
+          </tr>
+          <tr>
+            <td><button id="7"></button></td>
+            <td><button id="8"></button></td>
+            <td><button id="9"></button></td>
+          </tr>
+        </table>
+        <div id="buttons">
+          <button id="reset-button" onclick="state=new_game();"></button>
+          <button
+            class="pvp"
+            id="mode-button"
+            onclick="state=toggle_player_mode(state)"
+          ></button>
+          <button id="info-button"></button>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

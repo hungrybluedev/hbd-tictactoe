@@ -1,0 +1,9 @@
+{
+  "include": ["./"],  
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "module": "commonjs",
+    "strict": true
+  }
+}
