@@ -1,9 +1,14 @@
+/**************************************************
+ * Service Worker registration.                   *
+ * This is important for the PWA functionalities. *
+ **************************************************/
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("sw.js")
-    .then(() => console.log("Registered service worker!"))
+    // .then(() => console.log("Registered service worker!"))
     .catch((err) => console.log(err));
 }
+
 /***********************************
  * Constants that are loaded once. *
  ***********************************/

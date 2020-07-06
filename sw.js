@@ -10,10 +10,11 @@ const files_to_cache = [
   "https://hungrybluedev.github.io/hbd-tictactoe/styles/fonts.css",
   "https://hungrybluedev.github.io/hbd-tictactoe/styles/style.css",
   "https://hungrybluedev.github.io/hbd-tictactoe/index.html",
+  "https://hungrybluedev.github.io/hbd-tictactoe/tictactoe.manifest",
   "https://hungrybluedev.github.io/hbd-tictactoe/",
 ];
 
-const cache_name = "HBDTicTacToe-v1.0.1";
+const cache_name = "HBDTicTacToe-v1.0.2";
 
 self.addEventListener("install", (event) => {
   console.log("Installing...");
@@ -30,11 +31,11 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  console.log("Inside the activate handler:", event);
+  // console.log("Inside the activate handler:", event);
 });
 
 self.addEventListener("fetch", (event) => {
-  console.log(event.request);
+  // console.log(event.request);
 
   event.respondWith(
     caches.match(event.request).then((cached_response) => {
