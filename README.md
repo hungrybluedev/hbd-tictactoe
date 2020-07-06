@@ -1,9 +1,7 @@
 <div align="center">
-<p>
-<a href="https://hungrybluedev.github.io/hbd-tictactoe/">
-<img width="400px" src="https://i.imgur.com/dLJVHOJ.png" alt="A Screenshot of the TicTacToe App" />
-</a>
-</p>
+  <p>
+    <img src="https://i.imgur.com/hkiL0Cf.png" alt="TicTacToe logo" />
+  </p>
 </div>
 
 <div align="center">
@@ -17,9 +15,21 @@
 # TicTacToe!
 
 The classic game TicTacToe playable on your browser! ([Link](https://hungrybluedev.github.io/hbd-tictactoe/))
-It'll work on all devices and all operating systems.
+It'll work on all devices and all operating systems. It is also installable through Chrome, Edge, and all major browsers that support Progressive Web Apps.
+
+<div align="center">
+<p>
+<a href="https://hungrybluedev.github.io/hbd-tictactoe/">
+<img width="400px" src="https://i.imgur.com/dLJVHOJ.png" alt="A Screenshot of the TicTacToe App" />
+</a>
+</p>
+</div>
 
 # Works Offline
+
+## Installable
+
+Open the website on your browser. If you go to the tools menu (or something similar), you should be able to find options such as _Install this website as an App_, or _Add App to Home Screen_. These options will install the app on your device and will it will run like a newa-native application.
 
 ## Use a Service Worker
 
@@ -43,6 +53,8 @@ If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungry
   - [x] Core Game Logic
   - [ ] Info Button
   - [ ] CPU player
+  - [ ] Fix Input Mapping for Touch
+  - [ ] Add Particle Effects to the End Screen
 - [x] Progressive Web App
   - [x] Works Offline
   - [x] Has an App Manifest
