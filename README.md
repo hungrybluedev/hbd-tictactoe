@@ -18,22 +18,22 @@
 
 The classic game TicTacToe playable on your browser! ([Link](https://hungrybluedev.github.io/hbd-tictactoe/))
 
-# Works offline!
+# Works Offline
 
-## Addition of a Service Worker
+## Use a Service Worker
 
 I've included a service worker that uses the _offline-first paradigm_.
 This causes the page to look for resources in the cache at first.
 If the resource requested is not present, we fall back to using the network.
 
 Now, I've listed all the items necessary in the list of resources to cache.
-So ideally, so should be able to load the page only once and then have it work offline.
+So ideally, it should be able to load the page only once and then have it work offline.
 
 ## Troubleshooting
 
 If you're missing any new feature that I've added, try clearing your history and cache.
 The site should redownload and work as intended.
-If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungrybluedev/)
+If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungrybluedev/).
 
 # Progress
 
