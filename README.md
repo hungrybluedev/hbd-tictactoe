@@ -43,10 +43,10 @@ If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungry
   - [x] Core Game Logic
   - [ ] Info Button
   - [ ] CPU player
-- [ ] Progressive Web App
+- [x] Progressive Web App
   - [x] Works Offline
-  - [ ] Has an App Manifest
-  - [ ] Has Icons
+  - [x] Has an App Manifest
+  - [x] Has Icons
   
 # License
 
