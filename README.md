@@ -51,14 +51,15 @@ If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungry
 - [ ] Core functionality
   - [x] Basic Design
   - [x] Core Game Logic
+  - [x] Fix Input Mapping for Touch
   - [ ] Info Button
   - [ ] CPU player
-  - [ ] Fix Input Mapping for Touch
   - [ ] Add Particle Effects to the End Screen
 - [x] Progressive Web App
   - [x] Works Offline
   - [x] Has an App Manifest
   - [x] Has Icons
+  - [x] Remove Old Caches on Version Update
   
 # License
 
