@@ -88,14 +88,7 @@ td button {
   background-color: #ccc;
   transition: 100ms ease-in-out;
 }
-td button:not([disabled]):hover,
-td button:not([disabled]):focus {
-  transform: scale(0.9);
-  background-color: #f0f0f0;
-}
-td button:active {
-  transform: scale(0.7);
-}
+
 td button:disabled {
   background-color: transparent;
   transition: none;
@@ -124,13 +117,9 @@ td button.winning-line {
   background-repeat: no-repeat;
   box-shadow: 1rem 1rem 3rem #bcbcbc, -1rem -1rem 3rem #fefefe;
 }
-#buttons button:hover {
-  background-color: #99999999;
-  transform: scale(1.2);
-}
 #buttons button:active {
-  /* background-color: #fff; */
-  transform: scale(1);
+  transform: scale(1.2);
+  background-color: #fff;
   box-shadow: 1rem 1rem 3rem #bcbcbc, -1rem -1rem 3rem #fefefe;
 }
 #reset-button {
@@ -162,8 +151,21 @@ td button.winning-line {
   z-index: 1000;
   pointer-events: none;
 }
-
 #covering.active {
   background-color: #eee;
   pointer-events: all;
+}
+@media screen and (min-width: 700px) {
+  td button:not([disabled]):hover,
+  td button:not([disabled]):focus {
+    transform: scale(0.9);
+    background-color: #f0f0f0;
+  }
+  td button:active {
+    transform: scale(0.7);
+  }
+  #buttons button:hover {
+    background-color: #99999999;
+    transform: scale(1.2);
+  }
 }
