@@ -159,8 +159,10 @@ td button.winning-line {
   background-color: transparent;
   transition: 2s ease-in-out;
   z-index: 1000;
+  pointer-events: none;
 }
 
 #covering.active {
   background-color: #eee;
+  pointer-events: all;
 }

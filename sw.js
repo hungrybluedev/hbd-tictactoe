@@ -13,7 +13,7 @@ const files_to_cache = [
   "https://hungrybluedev.github.io/hbd-tictactoe/",
 ];
 
-const cache_name = "HBDTicTacToe-v1";
+const cache_name = "HBDTicTacToe-v1.0.1";
 
 self.addEventListener("install", (event) => {
   console.log("Installing...");
