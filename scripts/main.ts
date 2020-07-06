@@ -8,7 +8,6 @@ if ("serviceWorker" in navigator) {
     // .then(() => console.log("Registered service worker!"))
     .catch((err) => console.log(err));
 }
-
 /***********************************
  * Constants that are loaded once. *
  ***********************************/
