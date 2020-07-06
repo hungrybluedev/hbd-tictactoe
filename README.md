@@ -52,7 +52,7 @@ If it still doesn't work, contact me [@hungrybluedev](https://twitter.com/hungry
   - [x] Basic Design
   - [x] Core Game Logic
   - [x] Fix Input Mapping for Touch
-  - [ ] Info Button
+  - [x] Info Button
   - [ ] CPU player
   - [ ] Add Particle Effects to the End Screen
 - [x] Progressive Web App
