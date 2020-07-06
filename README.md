@@ -17,6 +17,7 @@
 # TicTacToe!
 
 The classic game TicTacToe playable on your browser! ([Link](https://hungrybluedev.github.io/hbd-tictactoe/))
+It'll work on all devices and all operating systems.
 
 # Works Offline
 
