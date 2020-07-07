@@ -26,13 +26,13 @@ var Turn;
     Turn[Turn["O"] = 1] = "O";
 })(Turn || (Turn = {}));
 /**
- * The opponent whom the human is playing against.
+ * The types of players supported.
  */
-var Opponent;
-(function (Opponent) {
-    Opponent[Opponent["Human"] = 0] = "Human";
-    Opponent[Opponent["CPU"] = 1] = "CPU";
-})(Opponent || (Opponent = {}));
+var Player;
+(function (Player) {
+    Player[Player["Human"] = 0] = "Human";
+    Player[Player["CPU"] = 1] = "CPU";
+})(Player || (Player = {}));
 /**
  * The possible states for the game. It can be looping
  * (Loop) with active squared not clicked on yet. If not
@@ -209,7 +209,8 @@ const new_game = () => {
         turn: Turn.X,
         status: Status.Loop,
         message: initialize_message(),
-        opponent: Opponent.Human,
+        player_x: Player.Human,
+        player_o: Player.Human,
         encoding: encoding_for(temporary_button_array),
         mode_button: initialize_button("mode"),
         reset_button: initialize_button("reset"),
@@ -224,12 +225,11 @@ const new_game = () => {
     return state;
 };
 const toggle_player_mode = (previous_state) => {
-    let previous_opponent = previous_state.opponent;
+    let previous_player2 = previous_state.player_o;
     let state = new_game();
     state.mode_button.classList.toggle("pvc");
     state.mode_button.classList.toggle("pvp");
-    state.opponent =
-        previous_opponent === Opponent.CPU ? Opponent.Human : Opponent.CPU;
+    state.player_o = previous_player2 === Player.CPU ? Player.Human : Player.CPU;
     return state;
 };
 const has_a_player_won = (state) => {
@@ -244,7 +244,7 @@ const has_a_player_won = (state) => {
         if (count !== 3) {
             continue;
         }
-        state.message.innerText = symbol + " won!🎉";
+        state.message.innerText = symbol_for(state.turn) + " won!🎉";
         for (let location of locations) {
             state.buttons[location].classList.add("winning-line");
         }
