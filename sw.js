@@ -37,4 +37,3 @@ self.addEventListener("fetch", (event) => {
         return cached_response || fetch(event.request);
     }));
 });
-let deferred_prompt;

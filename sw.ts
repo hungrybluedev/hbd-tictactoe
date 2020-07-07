@@ -46,6 +46,3 @@ self.addEventListener("fetch", (event: Event) => {
     })
   );
 });
-
-let deferred_prompt;
-
