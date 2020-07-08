@@ -2,20 +2,19 @@
  * Service Worker registration.                   *
  * This is important for the PWA functionalities. *
  **************************************************/
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("sw.js")
     // .then(() => console.log("Registered service worker!"))
     .catch((err) => console.log(err));
 }
+
 /***********************************
  * Constants that are loaded once. *
  ***********************************/
 
-// Unicode emoji for X
-const x_sym = "❌";
-// Unicode emoji for O
-const o_sym = "⭕";
+import * as constants from "./modules/constants.js";
 
 /**
  * The possible values for whose turn it is currently.
@@ -47,22 +46,6 @@ enum Status {
   Draw,
 }
 
-const rows = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-];
-const columns = [
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-];
-const diagonals = [
-  [0, 4, 8],
-  [2, 4, 6],
-];
-const cases = [...rows, ...columns, ...diagonals];
-
 /**
  * The state type for a game. All "global" properties
  * are encapsulate within a single state.
@@ -87,7 +70,7 @@ type GameState = {
  * @param turn The turn whose symbol to return.
  */
 const symbol_for = (turn: Turn): string => {
-  return turn === Turn.X ? x_sym : o_sym;
+  return turn === Turn.X ? constants.x_sym : constants.o_sym;
 };
 
 /**
@@ -102,10 +85,10 @@ const encoding_for = (buttons: Array<HTMLButtonElement>) => {
   for (const button of buttons) {
     let current_symbol: string;
     switch (button.innerText) {
-      case x_sym:
+      case constants.x_sym:
         current_symbol = "X";
         break;
-      case o_sym:
+      case constants.o_sym:
         current_symbol = "O";
         break;
       default:
@@ -266,7 +249,7 @@ const toggle_player_mode = (previous_state: GameState): GameState => {
 
 const has_a_player_won = (state: GameState): boolean => {
   const symbol = state.turn === Turn.X ? "X" : "O";
-  for (let locations of cases) {
+  for (let locations of constants.cases) {
     let count = 0;
 
     for (let location of locations) {
@@ -318,3 +301,22 @@ const iterate_game_loop = () => {
  **********************************/
 
 let state = new_game();
+
+/*********************************************
+ * onclick behaviour for the control buttons *
+ *********************************************/
+
+state.reset_button.onclick = () => {
+  state = new_game();
+};
+
+state.mode_button.onclick = () => {
+  state = toggle_player_mode(state);
+};
+
+const info_button = document.getElementById("info-button");
+if (info_button) {
+  info_button.onclick = () => {
+    window.open("https://github.com/hungrybluedev/hbd-tictactoe");
+  };
+}

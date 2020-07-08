@@ -43,25 +43,16 @@
           </tr>
         </table>
         <div id="buttons">
-          <button
-            aria-label="Reset button"
-            id="reset-button"
-            onclick="state=new_game();"
-          ></button>
+          <button aria-label="Reset button" id="reset-button"></button>
           <button
             aria-label="Change mode button"
             class="pvp"
             id="mode-button"
-            onclick="state=toggle_player_mode(state);"
           ></button>
-          <button
-            aria-label="Info button"
-            id="info-button"
-            onclick="window.open('https://github.com/hungrybluedev/hbd-tictactoe');"
-          ></button>
+          <button aria-label="Info button" id="info-button"></button>
         </div>
       </div>
     </div>
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
   </body>
 </html>

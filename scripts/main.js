@@ -1,44 +1,19 @@
-"use strict";
-/**************************************************
- * Service Worker registration.                   *
- * This is important for the PWA functionalities. *
- **************************************************/
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker
         .register("sw.js")
-        // .then(() => console.log("Registered service worker!"))
         .catch((err) => console.log(err));
 }
-/***********************************
- * Constants that are loaded once. *
- ***********************************/
-// Unicode emoji for X
-const x_sym = "❌";
-// Unicode emoji for O
-const o_sym = "⭕";
-/**
- * The possible values for whose turn it is currently.
- * It can only be one of X, or O.
- */
+import * as constants from "./modules/constants.js";
 var Turn;
 (function (Turn) {
     Turn[Turn["X"] = 0] = "X";
     Turn[Turn["O"] = 1] = "O";
 })(Turn || (Turn = {}));
-/**
- * The types of players supported.
- */
 var Player;
 (function (Player) {
     Player[Player["Human"] = 0] = "Human";
     Player[Player["CPU"] = 1] = "CPU";
 })(Player || (Player = {}));
-/**
- * The possible states for the game. It can be looping
- * (Loop) with active squared not clicked on yet. If not
- * looping, either X has won (XWon), O has won (OWon), or
- * it is a draw with no more squares remaining (Draw).
- */
 var Status;
 (function (Status) {
     Status[Status["Loop"] = 0] = "Loop";
@@ -46,46 +21,18 @@ var Status;
     Status[Status["OWon"] = 2] = "OWon";
     Status[Status["Draw"] = 3] = "Draw";
 })(Status || (Status = {}));
-const rows = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-];
-const columns = [
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-];
-const diagonals = [
-    [0, 4, 8],
-    [2, 4, 6],
-];
-const cases = [...rows, ...columns, ...diagonals];
-/**
- * Returns the symbol for the current turn. It can be
- * used for the buttons' contents as well as for the
- * messages to be displayed.
- * @param turn The turn whose symbol to return.
- */
 const symbol_for = (turn) => {
-    return turn === Turn.X ? x_sym : o_sym;
+    return turn === Turn.X ? constants.x_sym : constants.o_sym;
 };
-/**
- * Returns a string representation of the board that is
- * easy to process (compared to decoding the button array).
- * It can also be used to implement an AI for the game. I
- * plan on doing that later.
- * @param buttons The buttons whose state is to be encoded.
- */
 const encoding_for = (buttons) => {
     let symbols = Array(9);
     for (const button of buttons) {
         let current_symbol;
         switch (button.innerText) {
-            case x_sym:
+            case constants.x_sym:
                 current_symbol = "X";
                 break;
-            case o_sym:
+            case constants.o_sym:
                 current_symbol = "O";
                 break;
             default:
@@ -95,11 +42,6 @@ const encoding_for = (buttons) => {
     }
     return symbols.join("");
 };
-/**
- * Loads the buttons from the document into the designated
- * button array for easy access later. This should be only
- * called once.
- */
 const initialize_buttons = () => {
     const buttons = new Array(9);
     for (let i = 0; i < buttons.length; i++) {
@@ -144,13 +86,6 @@ const initialize_covering = () => {
         return element;
     }
 };
-/**************************************
- * Functions for UI interaction logic *
- **************************************/
-/**
- * Reset the buttons by clearing them and re-enabling them.
- * @param state The state whose buttons to reset.
- */
 let reset_buttons = (state) => {
     state.buttons.forEach((button) => {
         button.disabled = false;
@@ -158,30 +93,14 @@ let reset_buttons = (state) => {
         button.innerHTML = "";
     });
 };
-/**
- * A player has won. So we disable all the buttons
- * which will finalize the state of the game and
- * prevent any further interactions.
- * @param state The state whose buttons to disable.
- */
 let disable_all_buttons = (state) => {
     state.buttons.forEach((button) => {
         button.disabled = true;
     });
 };
-/**
- * Display whose turn it is on the message element.
- * @param state The state whose message element to update.
- */
 const update_turn_message = (state) => {
     state.message.innerText = symbol_for(state.turn) + "’s turn!";
 };
-/**
- * Causes the message, the reset and the mode toggle buttons
- * to enter into a breathing animation to draw attention to
- * them after a game is over.
- * @param state The state whose message to affect.
- */
 const add_breathing_animation = (state) => {
     state.message.classList.add("breathe");
     state.mode_button.classList.add("breathe");
@@ -234,7 +153,7 @@ const toggle_player_mode = (previous_state) => {
 };
 const has_a_player_won = (state) => {
     const symbol = state.turn === Turn.X ? "X" : "O";
-    for (let locations of cases) {
+    for (let locations of constants.cases) {
         let count = 0;
         for (let location of locations) {
             if (state.encoding[location] === symbol) {
@@ -271,7 +190,16 @@ const iterate_game_loop = () => {
     state.turn = next_turn;
     update_turn_message(state);
 };
-/**********************************
- *  To be called at load/refresh. *
- **********************************/
 let state = new_game();
+state.reset_button.onclick = () => {
+    state = new_game();
+};
+state.mode_button.onclick = () => {
+    state = toggle_player_mode(state);
+};
+const info_button = document.getElementById("info-button");
+if (info_button) {
+    info_button.onclick = () => {
+        window.open("https://github.com/hungrybluedev/hbd-tictactoe");
+    };
+}
