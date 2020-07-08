@@ -5,6 +5,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
-    "removeComments": true
+    "removeComments": true,
+    "watch": true
   }
 }
