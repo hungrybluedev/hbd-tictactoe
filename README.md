@@ -69,11 +69,9 @@ Licensed under the [MIT License](LICENSE).
 
 # Support
 
-You can buy me a coffee at [Ko-Fi](https://ko-fi.com/hungrybluedev).
+You can buy me a coffee at [Ko-fi](https://ko-fi.com/hungrybluedev).
 
-<a href='https://ko-fi.com/hungrybluedev' target='_blank'>
-  <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
-</a>
+<a href='https://ko-fi.com/I2I31TIDW' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 You can support me on [Patreon](https://www.patreon.com/bePatron?u=24185563) on a monthly basis.
 
