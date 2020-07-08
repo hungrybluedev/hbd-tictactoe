@@ -1,9 +1,10 @@
 {
-  "include": ["./", "../sw.ts"],  
+  "include": ["./", "../sw.ts"],
   "compilerOptions": {
     "incremental": true,
     "target": "ESNext",
-    "module": "commonjs",
-    "strict": true
+    "module": "ESNext",
+    "strict": true,
+    "removeComments": true
   }
 }
