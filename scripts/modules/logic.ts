@@ -19,22 +19,6 @@ import {
   reset_buttons,
 } from "./ui.js";
 
-const update_status = (state: GameState) => {
-  if (is_game_drawn(state)) {
-    state.message.innerHTML = "<strong>Draw!</strong>";
-    state.status = Status.Draw;
-    add_breathing_animation(state);
-    return;
-  }
-  if (has_a_player_won(state)) {
-    state.status = state.turn === Turn.X ? Status.XWon : Status.OWon;
-    add_breathing_animation(state);
-    disable_all_buttons(state);
-    return;
-  }
-  state.status = Status.Loop;
-};
-
 export const new_game = (): GameState => {
   const state: GameState = {
     buttons: retrieve_grid_buttons(),
@@ -100,6 +84,22 @@ const is_game_drawn = (state: GameState): boolean => {
     }
   }
   return !has_a_player_won(state);
+};
+
+const update_status = (state: GameState) => {
+  if (is_game_drawn(state)) {
+    state.message.innerHTML = "<strong>Draw!</strong>";
+    state.status = Status.Draw;
+    add_breathing_animation(state);
+    return;
+  }
+  if (has_a_player_won(state)) {
+    state.status = state.turn === Turn.X ? Status.XWon : Status.OWon;
+    add_breathing_animation(state);
+    disable_all_buttons(state);
+    return;
+  }
+  state.status = Status.Loop;
 };
 
 export const iterate_game_loop = (state: GameState) => {

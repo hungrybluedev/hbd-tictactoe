@@ -2,21 +2,6 @@ import * as constants from "./constants.js";
 import { Turn, Status, Player } from "./types.js";
 import { encoding_for, retrieve_grid_buttons, retrieve_ui_button, retrieve_message_box, retrieve_canvas, symbol_for, } from "./pure_functions.js";
 import { add_breathing_animation, disable_all_buttons, initialize_grid_buttons, update_turn_message, reset_buttons, } from "./ui.js";
-const update_status = (state) => {
-    if (is_game_drawn(state)) {
-        state.message.innerHTML = "<strong>Draw!</strong>";
-        state.status = Status.Draw;
-        add_breathing_animation(state);
-        return;
-    }
-    if (has_a_player_won(state)) {
-        state.status = state.turn === Turn.X ? Status.XWon : Status.OWon;
-        add_breathing_animation(state);
-        disable_all_buttons(state);
-        return;
-    }
-    state.status = Status.Loop;
-};
 export const new_game = () => {
     const state = {
         buttons: retrieve_grid_buttons(),
@@ -74,6 +59,21 @@ const is_game_drawn = (state) => {
         }
     }
     return !has_a_player_won(state);
+};
+const update_status = (state) => {
+    if (is_game_drawn(state)) {
+        state.message.innerHTML = "<strong>Draw!</strong>";
+        state.status = Status.Draw;
+        add_breathing_animation(state);
+        return;
+    }
+    if (has_a_player_won(state)) {
+        state.status = state.turn === Turn.X ? Status.XWon : Status.OWon;
+        add_breathing_animation(state);
+        disable_all_buttons(state);
+        return;
+    }
+    state.status = Status.Loop;
 };
 export const iterate_game_loop = (state) => {
     const old_encoding = state.encoding;
